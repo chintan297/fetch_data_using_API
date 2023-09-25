@@ -7,6 +7,8 @@ const title = document.getElementById("title");
 var comp = document.getElementsByName("Completed");
 const editBtn = document.getElementById("edit");
 const s = document.getElementById("searchDiv");
+const dataList = document.getElementById("dataList");
+var search = document.getElementById("searchText");
 
 var isEdit;
 let arrayOfData = [];
@@ -25,13 +27,16 @@ async function fetchData() {
     handleData(arrayOfData);
   }
 }
-
+{
+  /* <div id="dataList"><p>Example</p></div> */
+}
 fetchData();
 // handel data in table
 function handleData(data) {
   s.innerHTML = `
   <b>Search bar : </b>
   <input type="text" id="searchText" onkeyup="handelSearchKey(event)" placeholder="Search title" />
+  
   <button id="searchBtn" onclick="handleSearch()" >Search</button>
   <button id="searchReset" onclick="handleReset()">Reset Search</button>
   `;
@@ -331,7 +336,24 @@ function putData(newData) {
 
 // handel Search
 const handelSearchKey = (e) => {
-  // console.log(e.key.trim().length)
+  // console.log(e.target.value)
+  let input = document.getElementById("searchText").value;
+  input = input.toLowerCase();
+  let x = document.getElementById("table");
+  let tr = x.getElementsByTagName("tr");
+  console.log(input);
+  for (let i = 0; i < 200; i++) {
+    let td = tr[i].getElementsByTagName("td")[2];
+    if (td) {
+      let txtVal = td.textContent || td.innerHTML;
+      if (txtVal.toUpperCase().indexOf(input) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+
   console.log(e.key.trim().length);
   if (e.key.trim().length === 0) {
     document.getElementById("searchBtn").style.visibility = "hidden";
@@ -353,7 +375,7 @@ const handleSearch = () => {
   isSearched = true;
   ssData = [];
   var search = document.getElementById("searchText");
-  var storeVal = search.value
+  var storeVal = search.value;
   let curVal = search.value.trimStart().toUpperCase();
 
   arrayOfData.forEach(function (arr) {
@@ -364,6 +386,5 @@ const handleSearch = () => {
   // arrayOfData = ssData;
   handleData(ssData);
   document.getElementById("searchReset").style.visibility = "visible";
-  document.getElementById("searchText").value = storeVal
-  
+  document.getElementById("searchText").value = storeVal;
 };
