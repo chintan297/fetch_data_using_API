@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fetch Data</title>
+    <link rel="stylesheet" href="APIstyle.css" />
+    
+  </head>
+  <body>
+    <div class="container">
+      <h1>Fetch Data using API</h1>
+      <form id="form">
+        <table id="formTable">
+          <tr>
+            <td>
+              <b>Id :</b>
+            </td>
+            <td>
+              <input
+                readonly
+                id="id"
+                type="text"
+                placeholder="ID Auto generated"
+              />
+            </td>
+            <td>
+              <b>UserId :</b>
+            </td>
+            <td>
+              <input
+                id="userId"
+                type="text"
+                placeholder="Enter UserId"
+              />
+              <p id="userIdError"></p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <b>Title :</b>
+            </td>
+            <td colspan="3">
+              <input
+                id="title"
+                type="text"
+                style="width: 98%"
+                placeholder="Enter Title"
+              />
+              <p id="titleError"></p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <b>Completed :</b>
+            </td>
+            <td>
+              <input
+                required
+                type="radio"
+                name="Completed"
+                id="true"
+                class="completed"
+                value="true"
+                checked
+              />True
+              <input
+                required
+                type="radio"
+                name="Completed"
+                class="completed"
+                id="false"
+                value="false"
+                
+              />False
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td style="float: right">
+              <button value="submit" id="submit">Submit</button>  
+            </td>
+            <td><button type="reset">Clear</button></td>
+          </tr>
+        </table>
+      </form>
+  
+      <div id="searchDiv"></div>
+      <table id="table"></table>
+  
+    </div>
+   
+    <script src="APIscript.js"></script>
+  </body>
+</html>
